@@ -1,1 +1,19 @@
+Important:
+Haven't used Eucleadian Distance, but a metric which can represent proximity in similar manner
+so for distance i am using sum of absolute differences of all the part of vectors, apart from that
+i have implemented similar code optimization which was discussed in brainstorming session
 
+Prerequisite: Our dataset is already present in KD Tree, we have our Query vector.
+
+My algorihtm works as followed:
+1. Algorithm moves towards the query vector by traversing all the nodes in between,
+2. Will keep adding initial 10 nodes data and modified distance metric for each of 10 starting nodes in maxheap,
+3. After 10 node traversal my heap will contain 10 nodes data, further i will keep
+moving direction of my query vector and will chcek for each node whether its distance (modified) is lesser than that on heap, if its less
+will overwrite in root of maxheap and call heapify.
+4. This way at last when traversal ends, Max heap will give me approximate 10 nearest neighbors with some error rate, 
+because boundary cases(corner region points) are not included.
+
+With all this stated strategy, algorithm return neighbors in just one traversal, with all vectors present in heap
+
+Query Time: 0.002 sec on an average
